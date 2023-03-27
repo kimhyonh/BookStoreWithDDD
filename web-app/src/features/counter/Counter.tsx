@@ -95,7 +95,7 @@ const Counter = ({ classes }: CounterProps) => {
     };
     return (
         <React.Fragment>
-            <Grid container xs={12} alignItems="center" justify="center" spacing={3}>
+            <Grid container alignItems="center" justifyContent="center" spacing={3}>
                 <Grid item>
                     <Button
                         className={classes.button}
@@ -124,7 +124,7 @@ const Counter = ({ classes }: CounterProps) => {
                 container
                 direction="row"
                 alignItems="center"
-                justify="center"
+                justifyContent="center"
                 spacing={3}
             >
                 <Grid item>

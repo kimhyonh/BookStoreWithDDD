@@ -6,8 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Controllers
 {
-    [ApiController]
-    [Route("[controller]")]
+    [ApiVersion("1.0")]
+    [Route("api/v{version:apiVersion}/[Controller]")]
     public class WeatherForecastController : ControllerBase
     {
         private readonly ILogger<WeatherForecastController> _logger;
@@ -26,11 +26,11 @@ namespace Api.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<WeatherForecast> List()
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public ActionResult<IEnumerable<WeatherForecast>> List()
         {
-            _logger.LogInformation("Loading WeatherForcast...");
-
-            return _mapper.Map<IEnumerable<WeatherForecast>>(_repo.GetAll());
+            return Ok(_mapper.Map<IEnumerable<WeatherForecast>>(_repo.GetAll()));
         }
     }
 }

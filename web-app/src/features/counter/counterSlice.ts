@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AppThunk, RootState } from '../../app/store';
+import Api from '../../infrastructure/api';
 
 interface CounterState {
     value: number;
@@ -37,9 +38,17 @@ export const { increment, decrement, incrementByAmount } = slice.actions;
 // will call the thunk with the `dispatch` function as the first argument. Async
 // code can then be executed and other actions can be dispatched
 export const incrementAsync = (amount: number): AppThunk => dispatch => {
-    setTimeout(() => {
-        dispatch(incrementByAmount(amount));
-    }, 1000);
+    //fetch('weartherForcast')
+    //.then(response => console.log(response.json()));
+
+    Api
+        .get("weatherForecast")
+        .then(data => console.log(data))
+        .catch(err => console.log(err));
+
+     //setTimeout(() => {
+     //    dispatch(incrementByAmount(amount));
+     //}, 1000);
 };
 
 // The function below is called a selector and allows us to select a value from

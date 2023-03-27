@@ -2,7 +2,7 @@ import React from "react";
 import logo from "./logo.svg";
 import Counter from "./features/counter/Counter";
 import {
-    createMuiTheme,
+    createTheme,
     withStyles,
     createStyles,
     Theme,
@@ -15,7 +15,7 @@ import {
 } from "@material-ui/core";
 import purple from "@material-ui/core/colors/purple";
 
-const theme = createMuiTheme({
+const theme = createTheme({
     palette: {
         primary: purple,
         secondary: {
